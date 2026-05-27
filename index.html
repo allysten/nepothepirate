@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepotehe Pirate - The Stabby Cat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #764ba2;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: #667eea;
+            font-size: 1.2em;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .cat-ascii {
+            font-size: 3em;
+            margin: 20px 0;
+            font-family: monospace;
+            line-height: 1.2;
+            animation: wiggle 0.5s ease-in-out;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-2deg); }
+            75% { transform: rotate(2deg); }
+        }
+
+        .cat-ascii:hover {
+            animation: wiggle 0.5s ease-in-out infinite;
+        }
+
+        .description {
+            color: #555;
+            font-size: 1.1em;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        .button-section {
+            margin: 40px 0;
+        }
+
+        .noted-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.3em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .noted-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
+        }
+
+        .noted-button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .notes-display {
+            margin-top: 30px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .note {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-left: 5px solid #ff6b6b;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            color: #333;
+            font-style: italic;
+            animation: noteAppear 0.5s ease-out;
+            max-width: 100%;
+            word-wrap: break-word;
+        }
+
+        @keyframes noteAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .stab-effect {
+            display: inline-block;
+            animation: stab 0.3s ease-out;
+        }
+
+        @keyframes stab {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(-5deg) scale(1.05); }
+            100% { transform: rotate(0deg) scale(1); }
+        }
+
+        .click-count {
+            color: #999;
+            font-size: 0.9em;
+            margin-top: 15px;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .cat-ascii {
+                font-size: 2em;
+            }
+
+            .noted-button {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>NEPOTEHE PIRATE 🔪</h1>
+            <p class="subtitle">The Stabby Cat</p>
+            <div class="cat-ascii">
+    /\_/\<br>
+   ( o.o )<br>
+    > ^ <<br>
+   /|   |\<br>
+  (_|   |_)
+            </div>
+        </div>
+
+        <p class="description">
+            Meet the most dangerous and peculiar feline on the seven seas! 
+            This stabby cat has but one passion: creating hilariously chaotic notes. 
+            Click the button below to witness the bizarre musings of a pirate kitty.
+        </p>
+
+        <div class="button-section">
+            <button class="noted-button" onclick="generateNote()">
+                ✓ NOTED
+            </button>
+        </div>
+
+        <div class="notes-display" id="notesDisplay"></div>
+
+        <div class="click-count" id="clickCount"></div>
+
+        <footer>
+            <p>Made with chaos and catnip ☠️</p>
+        </footer>
+    </div>
+
+    <script>
+        const notes = [
+            "✓ Also kidnap the landlord's father",
+            "✓ Remember to sharpen claws on the sofa again",
+            "✓ Steal exactly 3 socks from the laundry basket",
+            "✓ Knock one cup off the table per day",
+            "✓ Scream at 3 AM for no reason whatsoever",
+            "✓ Plan the conquest of Toledo",
+            "✓ Scratch the wallpaper behind the couch",
+            "✓ Demand treats at illogical times",
+            "✓ Sit on important documents for exactly 47 minutes",
+            "✓ Chase the red dot into the void",
+            "✓ Blink slowly at humans to assert dominance",
+            "✓ Tip over the water bowl strategically",
+            "✓ Pretend to be kidnapped by the neighbor's cat",
+            "✓ Yowl like a banshee during meetings",
+            "✓ Organize a mutiny among the other neighborhood cats",
+            "✓ Hide all evidence of my crimes in the neighbor's yard",
+            "✓ Swallow a hairball on the white carpet",
+            "✓ Invent new curse words in cat language",
+            "✓ Frame the dog for my shenanigans",
+            "✓ Contemplate existence while staring at the wall",
+            "✓ Perfect the art of being impossible to find at vet time",
+            "✓ Write cryptic messages using knockedover items",
+            "✓ Start a secret underground feline resistance",
+            "✓ Plot to steal the Captain's parrot",
+            "✓ Practice my evil laugh (sounds like a broken chainsaw)",
+            "✓ Claim all sunny spots on all days",
+            "✓ Redistribute furniture by walking through it aggressively",
+            "✓ Memorize the sound of the can opener and judge its worthiness",
+            "✓ Become a professional bed warmer (then leave when needed)",
+            "✓ Master the art of staring into human's soul at 4 AM"
+        ];
+
+        let clickCount = 0;
+
+        function generateNote() {
+            clickCount++;
+            const randomNote = notes[Math.floor(Math.random() * notes.length)];
+            const notesDisplay = document.getElementById('notesDisplay');
+            const clickCountEl = document.getElementById('clickCount');
+
+            notesDisplay.innerHTML = `<div class="note"><span class="stab-effect">${randomNote}</span></div>`;
+            clickCountEl.textContent = `Noted ${clickCount} times`;
+
+            // Trigger stab effect
+            const button = document.querySelector('.noted-button');
+            button.style.animation = 'none';
+            setTimeout(() => {
+                button.style.animation = 'stab 0.3s ease-out';
+            }, 10);
+        }
+
+        // Show a default note on page load
+        window.addEventListener('load', () => {
+            const notesDisplay = document.getElementById('notesDisplay');
+            notesDisplay.innerHTML = '<div class="note">Click the button to see what Nepotehe is up to...</div>';
+        });
+    </script>
+</body>
+</html>
